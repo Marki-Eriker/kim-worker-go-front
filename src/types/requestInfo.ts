@@ -10,19 +10,38 @@ import { RequestInfoInput, ContractMediumType, RequestStatus } from "./globalTyp
 // ====================================================
 
 export interface requestInfo_request_info_error {
-  __typename: "InternalErrorProblem" | "UnknowErrorProblem" | "UnauthorizedErrorProblem" | "ValidationErrorProblem" | "ForbiddenErrorProblem";
+  __typename: "ValidationErrorProblem" | "UnknowErrorProblem" | "InternalErrorProblem" | "UnauthorizedErrorProblem" | "ForbiddenErrorProblem";
   message: string;
 }
 
 export interface requestInfo_request_info_record_contractor_error {
-  __typename: "InternalErrorProblem" | "UnknowErrorProblem" | "UnauthorizedErrorProblem" | "ValidationErrorProblem" | "ForbiddenErrorProblem";
+  __typename: "ValidationErrorProblem" | "UnknowErrorProblem" | "InternalErrorProblem" | "UnauthorizedErrorProblem" | "ForbiddenErrorProblem";
   message: string;
+}
+
+export interface requestInfo_request_info_record_contractor_record_person_error {
+  __typename: "ValidationErrorProblem" | "UnknowErrorProblem" | "InternalErrorProblem" | "UnauthorizedErrorProblem" | "ForbiddenErrorProblem";
+  message: string;
+}
+
+export interface requestInfo_request_info_record_contractor_record_person_record {
+  __typename: "Person";
+  email: string | null;
+  phone: string | null;
+}
+
+export interface requestInfo_request_info_record_contractor_record_person {
+  __typename: "PersonFindOutput";
+  ok: boolean;
+  error: requestInfo_request_info_record_contractor_record_person_error[] | null;
+  record: requestInfo_request_info_record_contractor_record_person_record | null;
 }
 
 export interface requestInfo_request_info_record_contractor_record {
   __typename: "Contractor";
   id: any;
   fillName: string;
+  person: requestInfo_request_info_record_contractor_record_person | null;
 }
 
 export interface requestInfo_request_info_record_contractor {
@@ -33,7 +52,7 @@ export interface requestInfo_request_info_record_contractor {
 }
 
 export interface requestInfo_request_info_record_organizationContact_error {
-  __typename: "InternalErrorProblem" | "UnknowErrorProblem" | "UnauthorizedErrorProblem" | "ValidationErrorProblem" | "ForbiddenErrorProblem";
+  __typename: "ValidationErrorProblem" | "UnknowErrorProblem" | "InternalErrorProblem" | "UnauthorizedErrorProblem" | "ForbiddenErrorProblem";
   message: string;
 }
 
@@ -52,7 +71,7 @@ export interface requestInfo_request_info_record_organizationContact {
 }
 
 export interface requestInfo_request_info_record_bankAccount_error {
-  __typename: "InternalErrorProblem" | "UnknowErrorProblem" | "UnauthorizedErrorProblem" | "ValidationErrorProblem" | "ForbiddenErrorProblem";
+  __typename: "ValidationErrorProblem" | "UnknowErrorProblem" | "InternalErrorProblem" | "UnauthorizedErrorProblem" | "ForbiddenErrorProblem";
   message: string;
 }
 
@@ -73,7 +92,7 @@ export interface requestInfo_request_info_record_bankAccount {
 }
 
 export interface requestInfo_request_info_record_signatory_error {
-  __typename: "InternalErrorProblem" | "UnknowErrorProblem" | "UnauthorizedErrorProblem" | "ValidationErrorProblem" | "ForbiddenErrorProblem";
+  __typename: "ValidationErrorProblem" | "UnknowErrorProblem" | "InternalErrorProblem" | "UnauthorizedErrorProblem" | "ForbiddenErrorProblem";
   message: string;
 }
 
@@ -94,7 +113,7 @@ export interface requestInfo_request_info_record_signatory {
 }
 
 export interface requestInfo_request_info_record_ships_error {
-  __typename: "InternalErrorProblem" | "UnknowErrorProblem" | "UnauthorizedErrorProblem" | "ValidationErrorProblem" | "ForbiddenErrorProblem";
+  __typename: "ValidationErrorProblem" | "UnknowErrorProblem" | "InternalErrorProblem" | "UnauthorizedErrorProblem" | "ForbiddenErrorProblem";
   message: string;
 }
 
@@ -121,7 +140,7 @@ export interface requestInfo_request_info_record_ships {
 }
 
 export interface requestInfo_request_info_record_contracts_error {
-  __typename: "InternalErrorProblem" | "UnknowErrorProblem" | "UnauthorizedErrorProblem" | "ValidationErrorProblem" | "ForbiddenErrorProblem";
+  __typename: "ValidationErrorProblem" | "UnknowErrorProblem" | "InternalErrorProblem" | "UnauthorizedErrorProblem" | "ForbiddenErrorProblem";
   message: string;
 }
 

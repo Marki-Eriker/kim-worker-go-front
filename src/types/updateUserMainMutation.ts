@@ -10,7 +10,7 @@ import { UserUpdateMainInput, BaseRole } from "./globalTypes";
 // ====================================================
 
 export interface updateUserMainMutation_user_updateMain_error {
-  __typename: "InternalErrorProblem" | "UnknowErrorProblem" | "UnauthorizedErrorProblem" | "ValidationErrorProblem" | "ForbiddenErrorProblem";
+  __typename: "ValidationErrorProblem" | "UnknowErrorProblem" | "InternalErrorProblem" | "UnauthorizedErrorProblem" | "ForbiddenErrorProblem";
   message: string;
 }
 

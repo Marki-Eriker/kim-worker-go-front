@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useQuery } from '@apollo/client'
-import { useForm } from 'react-hook-form'
 import { CONTRACT_FIND_QUERY } from './gql'
 import {
   contractFindQuery,

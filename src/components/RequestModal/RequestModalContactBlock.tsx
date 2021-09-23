@@ -1,10 +1,14 @@
 import React from 'react'
 import { CardRow, CardSubTitle } from './styles'
-import { requestInfo_request_info_record_organizationContact_record } from '../../types/requestInfo'
+import {
+  requestInfo_request_info_record_contractor_record_person_record,
+  requestInfo_request_info_record_organizationContact_record,
+} from '../../types/requestInfo'
 
 interface Props {
   data:
     | requestInfo_request_info_record_organizationContact_record
+    | requestInfo_request_info_record_contractor_record_person_record
     | null
     | undefined
 }

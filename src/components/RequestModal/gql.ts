@@ -37,6 +37,13 @@ export const REQUEST_INFO_QUERY = gql`
             record {
               id
               fillName
+              person {
+                ...coreOutputFields
+                record {
+                  email
+                  phone
+                }
+              }
             }
           }
           organizationContact {

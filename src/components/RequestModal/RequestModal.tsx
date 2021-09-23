@@ -41,7 +41,7 @@ const RequestModal: React.FC<Props> = ({ setStatusModal, id }) => {
 
   useEffect(() => {
     executeInfoQuery()
-  }, [])
+  }, [executeInfoQuery])
 
   useEffect(() => {
     if (requestData?.request.info.ok) {
@@ -98,7 +98,13 @@ const RequestModal: React.FC<Props> = ({ setStatusModal, id }) => {
         mediumType={request?.contractMediumType}
         name={request?.contractor?.record?.fillName}
       />
-      <RequestModalContactBlock data={request?.organizationContact?.record} />
+      <RequestModalContactBlock
+        data={
+          request?.organizationContact?.ok
+            ? request.organizationContact.record
+            : request?.contractor?.record?.person?.record
+        }
+      />
       <RequestModalBankBlock data={request?.bankAccount?.record} />
       <RequestModalContractBlock data={request?.signatory?.record} />
       <RequestModalShipBlock ships={request?.ships?.record} />

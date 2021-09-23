@@ -10,7 +10,7 @@ import { RequestUpdateStatusInput, RequestStatus } from "./globalTypes";
 // ====================================================
 
 export interface updateRequestStatusMutation_request_updateStatus_error {
-  __typename: "InternalErrorProblem" | "UnknowErrorProblem" | "UnauthorizedErrorProblem" | "ValidationErrorProblem" | "ForbiddenErrorProblem";
+  __typename: "ValidationErrorProblem" | "UnknowErrorProblem" | "InternalErrorProblem" | "UnauthorizedErrorProblem" | "ForbiddenErrorProblem";
   message: string;
 }
 

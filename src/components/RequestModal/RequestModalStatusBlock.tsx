@@ -114,7 +114,13 @@ const RequestModalStatusBlock: React.FC<Props> = ({
         },
       })
     }
-  }, [createFileData, contractNumber])
+  }, [
+    createFileData,
+    contractNumber,
+    contractorId,
+    createContractMutation,
+    requestId,
+  ])
 
   const [executeRequestContractQuery] = useLazyQuery<
     requestContractInfo,
@@ -129,7 +135,7 @@ const RequestModalStatusBlock: React.FC<Props> = ({
         },
       })
     }
-  }, [createContractData])
+  }, [createContractData, executeRequestContractQuery, requestId])
 
   const onFileSubmit = async () => {
     if (isValid && !createFileLoading) {

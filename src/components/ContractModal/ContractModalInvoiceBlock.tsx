@@ -106,7 +106,7 @@ const ContractModalInvoiceBlock: React.FC<Props> = ({
         },
       })
     }
-  }, [createFileData])
+  }, [createFileData, contractId, invoiceCreateMutation])
 
   const onFileSubmit = async () => {
     if (isValid && !createFileLoading) {
