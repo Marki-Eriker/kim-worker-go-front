@@ -29,11 +29,18 @@ export enum OrderBy {
   DESC = "DESC",
 }
 
+export enum PaymentFilter {
+  ALL = "ALL",
+  NOT_PAID = "NOT_PAID",
+  NOT_VERIFIED = "NOT_VERIFIED",
+}
+
 export enum RequestStatus {
   accepted = "accepted",
   completed = "completed",
   pending = "pending",
   rejected = "rejected",
+  signed = "signed",
 }
 
 export interface ContractCreateInput {
@@ -50,6 +57,7 @@ export interface ContractFindInput {
 export interface ContractListInput {
   serviceTypeID?: any | null;
   filter: PaginationInput;
+  paymentFilter?: PaymentFilter | null;
 }
 
 export interface FileCreateInput {

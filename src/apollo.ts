@@ -55,7 +55,6 @@ const contextLink = setContext(async (_, { headers }) => {
       }
     } catch (error) {
       isLoggedInVar(false)
-      console.log(error.toString())
     }
   }
 

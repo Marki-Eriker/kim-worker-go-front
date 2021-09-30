@@ -14,7 +14,7 @@ import {
   TableItem,
   UserPageContainer,
 } from './styles'
-import { Paginator, UserModal } from '../../components'
+import { PaginationSize, Paginator, UserModal } from '../../components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 
@@ -61,33 +61,10 @@ const UserPage = () => {
               setPage={setPage}
             />
           )}
-          <div className='paginationSize'>
-            по
-            <span
-              className={pagination.pageSize === 10 ? 'active' : ''}
-              onClick={() =>
-                setPagination({ ...pagination, pageSize: 10, page: 1 })
-              }
-            >
-              10
-            </span>
-            <span
-              className={pagination.pageSize === 20 ? 'active' : ''}
-              onClick={() =>
-                setPagination({ ...pagination, pageSize: 20, page: 1 })
-              }
-            >
-              20
-            </span>
-            <span
-              className={pagination.pageSize === 30 ? 'active' : ''}
-              onClick={() =>
-                setPagination({ ...pagination, pageSize: 30, page: 1 })
-              }
-            >
-              30
-            </span>
-          </div>
+          <PaginationSize
+            pagination={pagination}
+            setPagination={setPagination}
+          />
         </CardTitle>
         <CardSubTitle>
           <TableItem>ID</TableItem>

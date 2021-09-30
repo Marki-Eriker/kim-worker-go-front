@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface logoutMutation_user_logout_error {
-  __typename: "ValidationErrorProblem" | "UnknowErrorProblem" | "InternalErrorProblem" | "UnauthorizedErrorProblem" | "ForbiddenErrorProblem";
+  __typename: "InternalErrorProblem" | "UnauthorizedErrorProblem" | "UnknowErrorProblem" | "ForbiddenErrorProblem" | "ValidationErrorProblem";
   message: string;
 }
 

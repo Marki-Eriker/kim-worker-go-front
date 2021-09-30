@@ -10,7 +10,7 @@ import { UserListInput } from "./globalTypes";
 // ====================================================
 
 export interface userListQuery_user_list_error {
-  __typename: "ValidationErrorProblem" | "UnknowErrorProblem" | "InternalErrorProblem" | "UnauthorizedErrorProblem" | "ForbiddenErrorProblem";
+  __typename: "InternalErrorProblem" | "UnauthorizedErrorProblem" | "UnknowErrorProblem" | "ForbiddenErrorProblem" | "ValidationErrorProblem";
   message: string;
 }
 

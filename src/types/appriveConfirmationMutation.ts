@@ -10,7 +10,7 @@ import { PaymentConfirmationApproveInput } from "./globalTypes";
 // ====================================================
 
 export interface appriveConfirmationMutation_payment_approveConfirmation_error {
-  __typename: "ValidationErrorProblem" | "UnknowErrorProblem" | "InternalErrorProblem" | "UnauthorizedErrorProblem" | "ForbiddenErrorProblem";
+  __typename: "InternalErrorProblem" | "UnauthorizedErrorProblem" | "UnknowErrorProblem" | "ForbiddenErrorProblem" | "ValidationErrorProblem";
   message: string;
 }
 

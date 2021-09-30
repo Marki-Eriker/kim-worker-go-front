@@ -27,7 +27,7 @@ export const CardTitle = styled.div`
   border-top-left-radius: 8px;
   height: 50px;
 
-  & div:nth-of-type(1) {
+  & div:nth-of-type(2) {
     margin-right: auto;
   }
 

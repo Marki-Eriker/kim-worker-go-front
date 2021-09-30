@@ -6,10 +6,20 @@ import {
   ContractContainer,
   TableItem,
 } from './styles'
-import { ContractModal, Paginator, SelectFilter } from '../../components'
+import {
+  ContractModal,
+  PaginationSize,
+  Paginator,
+  PaymentSortFilter,
+  SelectFilter,
+} from '../../components'
 import { useLazyQuery, useReactiveVar } from '@apollo/client'
 import { fileLinkVar } from '../../apollo'
-import { ContractListInput, OrderBy } from '../../types/globalTypes'
+import {
+  ContractListInput,
+  OrderBy,
+  PaymentFilter,
+} from '../../types/globalTypes'
 import { useMe } from '../../common/hooks'
 import { typeVariants } from '../../common/typeVariants'
 import {
@@ -35,6 +45,9 @@ const ContractPage = () => {
     orderField: 'created_at',
     orderBy: OrderBy.DESC,
   })
+  const [paymentFilter, setPaymentFilter] = useState<PaymentFilter>(
+    PaymentFilter.ALL,
+  )
 
   const onEditContractClick = (id: number) => {
     setContractModal({ isOpen: true, contractId: id })
@@ -57,7 +70,7 @@ const ContractPage = () => {
 
   useEffect(() => {
     let input: ContractListInput
-    input = { filter: { ...pagination } }
+    input = { filter: { ...pagination }, paymentFilter: paymentFilter }
     input = currentRequestType
       ? { serviceTypeID: currentRequestType, ...input }
       : { ...input }
@@ -65,7 +78,7 @@ const ContractPage = () => {
     executeContractListQuery({
       variables: { input },
     })
-  }, [currentRequestType, pagination, executeContractListQuery])
+  }, [currentRequestType, pagination, executeContractListQuery, paymentFilter])
 
   return (
     <ContractContainer>
@@ -73,6 +86,10 @@ const ContractPage = () => {
         <SelectFilter
           variants={allowedTypeVariants}
           setFilterValue={setCurrentRequestType}
+        />
+        <PaymentSortFilter
+          currentValue={paymentFilter}
+          setFilterValue={setPaymentFilter}
         />
         {!contractListLoading &&
           contractListData &&
@@ -82,33 +99,7 @@ const ContractPage = () => {
               setPage={setPage}
             />
           )}
-        <div className='paginationSize'>
-          по
-          <span
-            className={pagination.pageSize === 10 ? 'active' : ''}
-            onClick={() =>
-              setPagination({ ...pagination, pageSize: 10, page: 1 })
-            }
-          >
-            10
-          </span>
-          <span
-            className={pagination.pageSize === 20 ? 'active' : ''}
-            onClick={() =>
-              setPagination({ ...pagination, pageSize: 20, page: 1 })
-            }
-          >
-            20
-          </span>
-          <span
-            className={pagination.pageSize === 30 ? 'active' : ''}
-            onClick={() =>
-              setPagination({ ...pagination, pageSize: 30, page: 1 })
-            }
-          >
-            30
-          </span>
-        </div>
+        <PaginationSize pagination={pagination} setPagination={setPagination} />
       </CardTitle>
       <CardSubTitle>
         <TableItem alignCenter>ID</TableItem>

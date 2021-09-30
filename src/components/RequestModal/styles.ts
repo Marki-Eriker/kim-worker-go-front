@@ -67,8 +67,9 @@ export const CardRow = styled.div`
     margin-right: 10px;
     border: 2px solid ${(p) => p.theme.secondaryBackground};
     border-radius: 8px;
-    padding: 8px 10px;
+    padding: 10px 5px;
     transition: border-color 0.2s linear;
+    font-size: 12px;
 
     &:hover {
       border-color: ${(p) => p.theme.colors.secondary.gray700};

@@ -207,6 +207,14 @@ const RequestModalStatusBlock: React.FC<Props> = ({
           Принято в работу
         </span>
         <span
+          onClick={() => onStatusChangeClick(RequestStatus.signed)}
+          className={`status ${
+            currentStatus === RequestStatus.signed ? 'active' : ''
+          }`}
+        >
+          На подписании
+        </span>
+        <span
           onClick={() => onStatusChangeClick(RequestStatus.completed)}
           className={`status ${
             currentStatus === RequestStatus.completed ? 'active' : ''
@@ -229,7 +237,7 @@ const RequestModalStatusBlock: React.FC<Props> = ({
           Изменить
         </MainButton>
       </CardRow>
-      {currentStatus === RequestStatus.accepted && (
+      {currentStatus === RequestStatus.signed && (
         <>
           <CardSubTitle>
             Загрузить договор{' '}

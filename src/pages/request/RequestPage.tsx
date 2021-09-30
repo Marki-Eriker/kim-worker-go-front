@@ -20,7 +20,12 @@ import {
   RequestContainer,
   TableItem,
 } from './styles'
-import { Paginator, RequestModal, SelectFilter } from '../../components'
+import {
+  PaginationSize,
+  Paginator,
+  RequestModal,
+  SelectFilter,
+} from '../../components'
 import { getHumanityStatus, statusVariants } from '../../common/statusVariants'
 import { LoadingRowContainer } from '../../styles/containers'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -70,6 +75,9 @@ const RequestPage = () => {
         case 4:
           status = RequestStatus.completed
           break
+        case 5:
+          status = RequestStatus.signed
+          break
       }
     }
 
@@ -115,33 +123,7 @@ const RequestPage = () => {
             setPage={setPage}
           />
         )}
-        <div className='paginationSize'>
-          по
-          <span
-            className={pagination.pageSize === 10 ? 'active' : ''}
-            onClick={() =>
-              setPagination({ ...pagination, pageSize: 10, page: 1 })
-            }
-          >
-            10
-          </span>
-          <span
-            className={pagination.pageSize === 20 ? 'active' : ''}
-            onClick={() =>
-              setPagination({ ...pagination, pageSize: 20, page: 1 })
-            }
-          >
-            20
-          </span>
-          <span
-            className={pagination.pageSize === 30 ? 'active' : ''}
-            onClick={() =>
-              setPagination({ ...pagination, pageSize: 30, page: 1 })
-            }
-          >
-            30
-          </span>
-        </div>
+        <PaginationSize pagination={pagination} setPagination={setPagination} />
       </CardTitle>
       <CardSubTitle>
         <TableItem alignCenter>ID</TableItem>

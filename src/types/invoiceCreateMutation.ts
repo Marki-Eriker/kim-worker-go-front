@@ -10,7 +10,7 @@ import { PaymentInvoiceCreateInput } from "./globalTypes";
 // ====================================================
 
 export interface invoiceCreateMutation_payment_createInvoice_error {
-  __typename: "ValidationErrorProblem" | "UnknowErrorProblem" | "InternalErrorProblem" | "UnauthorizedErrorProblem" | "ForbiddenErrorProblem";
+  __typename: "InternalErrorProblem" | "UnauthorizedErrorProblem" | "UnknowErrorProblem" | "ForbiddenErrorProblem" | "ValidationErrorProblem";
   message: string;
 }
 

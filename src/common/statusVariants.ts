@@ -21,6 +21,10 @@ export const statusVariants = [
     id: 4,
     name: 'Выполнена',
   },
+  {
+    id: 5,
+    name: 'На подписании',
+  },
 ]
 
 export const getHumanityStatus = (status: RequestStatus): string => {
@@ -33,5 +37,7 @@ export const getHumanityStatus = (status: RequestStatus): string => {
       return 'Ожидает рассмотрения'
     case RequestStatus.rejected:
       return 'Отклонена'
+    case RequestStatus.signed:
+      return 'На подписании'
   }
 }
