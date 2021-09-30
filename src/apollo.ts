@@ -14,10 +14,7 @@ const token = localStorage.getItem(LOCALSTORAGE_TOKEN)
 
 export const isLoggedInVar = makeVar(token ? !isExpired(token) : false)
 export const authTokenVar = makeVar(token)
-const fileLink =
-  process.env.NODE_ENV === 'production'
-    ? process.env.REACT_APP_FILE_LINK_PROD
-    : process.env.REACT_APP_FILE_LINK_DEV
+const fileLink = process.env.REACT_APP_FILE_LINK
 export const fileLinkVar = makeVar(fileLink)
 
 const httpLink = createHttpLink({
