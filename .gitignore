@@ -2,6 +2,7 @@
 .idea
 schema.json
 .env
+dev.Dockerfile
 
 # dependencies
 /node_modules
