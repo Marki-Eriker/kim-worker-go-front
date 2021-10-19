@@ -10,7 +10,7 @@ import { RequestListInput, RequestStatus } from "./globalTypes";
 // ====================================================
 
 export interface getRequestListQuery_request_list_error {
-  __typename: "InternalErrorProblem" | "UnauthorizedErrorProblem" | "UnknowErrorProblem" | "ForbiddenErrorProblem" | "ValidationErrorProblem";
+  __typename: "ValidationErrorProblem" | "ForbiddenErrorProblem" | "UnknowErrorProblem" | "InternalErrorProblem" | "UnauthorizedErrorProblem";
   message: string;
 }
 
@@ -25,7 +25,7 @@ export interface getRequestListQuery_request_list_pagination {
 }
 
 export interface getRequestListQuery_request_list_record_serviceType_error {
-  __typename: "InternalErrorProblem" | "UnauthorizedErrorProblem" | "UnknowErrorProblem" | "ForbiddenErrorProblem" | "ValidationErrorProblem";
+  __typename: "ValidationErrorProblem" | "ForbiddenErrorProblem" | "UnknowErrorProblem" | "InternalErrorProblem" | "UnauthorizedErrorProblem";
   message: string;
 }
 
@@ -43,7 +43,7 @@ export interface getRequestListQuery_request_list_record_serviceType {
 }
 
 export interface getRequestListQuery_request_list_record_contractor_error {
-  __typename: "InternalErrorProblem" | "UnauthorizedErrorProblem" | "UnknowErrorProblem" | "ForbiddenErrorProblem" | "ValidationErrorProblem";
+  __typename: "ValidationErrorProblem" | "ForbiddenErrorProblem" | "UnknowErrorProblem" | "InternalErrorProblem" | "UnauthorizedErrorProblem";
   message: string;
 }
 

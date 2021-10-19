@@ -1,4 +1,4 @@
-import { RequestStatus } from '../types/globalTypes'
+import { RequestStatus } from '../../types/globalTypes'
 
 export const statusVariants = [
   {

@@ -8,12 +8,12 @@
 // ====================================================
 
 export interface coreOutputFields_error {
-  __typename: "InternalErrorProblem" | "UnauthorizedErrorProblem" | "UnknowErrorProblem" | "ForbiddenErrorProblem" | "ValidationErrorProblem";
+  __typename: "ValidationErrorProblem" | "ForbiddenErrorProblem" | "UnknowErrorProblem" | "InternalErrorProblem" | "UnauthorizedErrorProblem";
   message: string;
 }
 
 export interface coreOutputFields {
-  __typename: "UserUpdateMeOutput" | "ContractFindOutput" | "SignatoryGetOutput" | "EmailSendOutput" | "UserListOutput" | "UserFindOutput" | "FileCreateOutput" | "PersonFindOutput" | "UserUpdatePasswordOutput" | "UserRefreshOutput" | "PaymentInvoiceFindOutput" | "PaymentConfirmationFindOutput" | "UserMeOutput" | "UserCreateOutput" | "UserGrantRequestAccessOutput" | "UserUpdateMainOutput" | "BankAccountGetOutput" | "ContactListOutput" | "InternalErrorOutput" | "ContractorGetOutput" | "OrganizationContactGetOutput" | "AccessFindOutput" | "ContractCreateOutput" | "ServiceTypeGetOutput" | "NavigationFindOutput" | "PaymentConfirmationCreateOutput" | "RequestInfoOutput" | "UserDeleteOutput" | "RequestUpdateStatusOutput" | "UserLoginOutput" | "UserLogoutOutput" | "PaymentInvoiceCreateOutput" | "PaymentConfirmationApproveOutput" | "ShipGetOutput" | "UnauthorizedOutput" | "ForbiddenErrorOutput" | "RequestListOutput";
+  __typename: "BankAccountGetOutput" | "PersonFindOutput" | "UserUpdatePasswordOutput" | "PaymentConfirmationApproveOutput" | "ContractorGetOutput" | "NavigationFindOutput" | "UserMeOutput" | "PaymentConfirmationFindOutput" | "UserUpdateMeOutput" | "UserFindOutput" | "PaymentInvoiceCreateOutput" | "ContractFindOutput" | "UnauthorizedOutput" | "UserCreateOutput" | "UserLogoutOutput" | "RequestInfoOutput" | "AccessFindOutput" | "RequestUpdateStatusOutput" | "ForbiddenErrorOutput" | "ContractCreateOutput" | "InternalErrorOutput" | "FileCreateOutput" | "ServiceTypeGetOutput" | "UserLoginOutput" | "PaymentInvoiceFindOutput" | "RequestListOutput" | "UserRefreshOutput" | "SignatoryGetOutput" | "ShipGetOutput" | "UserDeleteOutput" | "UserGrantRequestAccessOutput" | "UserListOutput" | "OrganizationContactGetOutput" | "PaymentConfirmationCreateOutput" | "ContactListOutput" | "EmailSendOutput" | "UserUpdateMainOutput";
   ok: boolean;
   error: coreOutputFields_error[] | null;
 }

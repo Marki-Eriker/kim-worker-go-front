@@ -93,6 +93,11 @@ const RequestModal: React.FC<Props> = ({ setStatusModal, id }) => {
         fetchingStatus={request?.status!}
         onStatusChangeClick={onStatusChangeClick}
         contracts={request?.contracts?.record}
+        email={
+          request?.organizationContact?.ok
+            ? request.organizationContact.record?.email
+            : request?.contractor?.record?.person?.record?.email
+        }
       />
       <RequestModalMainBlock
         mediumType={request?.contractMediumType}

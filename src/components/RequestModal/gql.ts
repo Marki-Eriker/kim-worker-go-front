@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client'
-import { CORE_OUTPUT_FIELDS } from '../../common/gql'
+import { CORE_OUTPUT_FIELDS } from '../../common/gql/gql'
 
 export const REQUEST_INFO_CONTRACT_QUERY = gql`
   ${CORE_OUTPUT_FIELDS}

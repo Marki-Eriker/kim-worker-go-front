@@ -24,7 +24,7 @@ import {
   createFileMutation,
   createFileMutationVariables,
 } from '../../types/createFileMutation'
-import { CREATE_FILE_MUTATION } from '../../common/mutation'
+import { CREATE_FILE_MUTATION } from '../../common/gql/mutation'
 import {
   contractInvoiceFindQuery,
   contractInvoiceFindQueryVariables,

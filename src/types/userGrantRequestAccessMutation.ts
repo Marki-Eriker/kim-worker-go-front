@@ -10,7 +10,7 @@ import { UserGrantRequestAccessInput } from "./globalTypes";
 // ====================================================
 
 export interface userGrantRequestAccessMutation_user_grantRequestAccess_error {
-  __typename: "InternalErrorProblem" | "UnauthorizedErrorProblem" | "UnknowErrorProblem" | "ForbiddenErrorProblem" | "ValidationErrorProblem";
+  __typename: "ValidationErrorProblem" | "ForbiddenErrorProblem" | "UnknowErrorProblem" | "InternalErrorProblem" | "UnauthorizedErrorProblem";
   message: string;
 }
 

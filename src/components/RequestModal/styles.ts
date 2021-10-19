@@ -49,6 +49,10 @@ export const CardSubTitle = styled.div`
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
   margin-top: 20px;
+
+  & span {
+    margin-right: 5px;
+  }
 `
 
 export const CardRow = styled.div`
@@ -167,5 +171,32 @@ export const UploadFormContainer = styled.div`
   & .fileInput {
     width: 100%;
     height: 100px;
+  }
+`
+
+interface INotifyCheckbox {
+  notify: boolean
+}
+
+export const NotifyCheckbox = styled.div<INotifyCheckbox>`
+  position: relative;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-left: auto;
+
+  &:before {
+    font-size: 1.6rem;
+    position: absolute;
+    left: -25px;
+    content: '';
+    height: 18px;
+    width: 18px;
+    border: 2px solid
+      ${(p) =>
+        p.notify
+          ? p.theme.colors.secondary.greenLight
+          : p.theme.secondaryBackground};
+    background-color: ${(p) =>
+      p.notify ? p.theme.colors.secondary.greenLight : 'transparent'};
   }
 `

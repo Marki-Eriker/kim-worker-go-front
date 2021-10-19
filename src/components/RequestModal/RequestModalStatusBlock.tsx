@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { CardRow, CardSubTitle, UploadFormContainer } from './styles'
+import {
+  CardRow,
+  CardSubTitle,
+  NotifyCheckbox,
+  UploadFormContainer,
+} from './styles'
 import { RequestStatus } from '../../types/globalTypes'
 import { MainButton } from '../../styles/buttons'
 import { useLazyQuery, useMutation, useReactiveVar } from '@apollo/client'
@@ -22,7 +27,7 @@ import {
   createFileMutation,
   createFileMutationVariables,
 } from '../../types/createFileMutation'
-import { CREATE_FILE_MUTATION } from '../../common/mutation'
+import { CREATE_FILE_MUTATION } from '../../common/gql/mutation'
 import {
   createContractMutation,
   createContractMutationVariables,
@@ -31,6 +36,12 @@ import {
   requestContractInfo,
   requestContractInfoVariables,
 } from '../../types/requestContractInfo'
+import { EMAIL_SEND_QUERY } from '../../common/gql/query'
+import {
+  emailSendQuery,
+  emailSendQueryVariables,
+} from '../../types/emailSendQuery'
+import { CHANGE_STATUS_EMAIL_MESSAGE } from '../../common/constant'
 
 interface Props {
   contractorId: number
@@ -42,6 +53,7 @@ interface Props {
     | null
     | undefined
   onStatusChangeClick: (status: RequestStatus) => void
+  email: string | null | undefined
 }
 
 interface FileForm {
@@ -56,21 +68,45 @@ const RequestModalStatusBlock: React.FC<Props> = ({
   requestId,
   contracts,
   contractorId,
+  email,
 }) => {
   const [uploadError, setUploadError] = useState('')
   const [contractNumber, setContactNumber] = useState('')
+  const [notify, setNotify] = useState(true)
   const fileLink = useReactiveVar(fileLinkVar)
   const token = useReactiveVar(authTokenVar)
+
+  const [executeEmailSend, { data: emailSendData, error: emailSendError }] =
+    useLazyQuery<emailSendQuery, emailSendQueryVariables>(EMAIL_SEND_QUERY, {
+      fetchPolicy: 'network-only',
+    })
+
+  const onUpdateStatusCompleted = (data: updateRequestStatusMutation) => {
+    if (data.request.updateStatus.ok && notify && email) {
+      executeEmailSend({
+        variables: {
+          input: {
+            address: email,
+            message: CHANGE_STATUS_EMAIL_MESSAGE,
+          },
+        },
+      })
+    }
+  }
+
   const [statusMutation, { data, error, loading }] = useMutation<
     updateRequestStatusMutation,
     updateRequestStatusMutationVariables
-  >(REQUEST_UPDATE_STATUS_MUTATION)
+  >(REQUEST_UPDATE_STATUS_MUTATION, { onCompleted: onUpdateStatusCompleted })
 
   const onStatusChangeClickApproveClick = () => {
     if (currentStatus) {
       statusMutation({
         variables: {
-          input: { requestID: requestId, newStatus: currentStatus },
+          input: {
+            requestID: requestId,
+            newStatus: currentStatus,
+          },
         },
       })
     }
@@ -188,6 +224,17 @@ const RequestModalStatusBlock: React.FC<Props> = ({
           <span>{data && data.request.updateStatus.error![0].message}</span>
         )}
         {error && <span>{error.message}</span>}
+        {emailSendData && emailSendData.email.send.ok ? (
+          <span>email отправлен</span>
+        ) : (
+          <span>
+            {emailSendData && emailSendData.email.send.error![0].message}
+          </span>
+        )}
+        {emailSendError && <span>{emailSendError.message}</span>}
+        <NotifyCheckbox notify={notify} onClick={() => setNotify(!notify)}>
+          уведомлять клиента
+        </NotifyCheckbox>
       </CardSubTitle>
       <CardRow>
         <span
@@ -283,10 +330,6 @@ const RequestModalStatusBlock: React.FC<Props> = ({
                 {...register('file', { required: 'Прикрепите файл пдф' })}
               />
               <input
-                // disabled={!!(contracts && contracts[0].number)}
-                // value={
-                //   contracts && contracts[0].number ? contracts[0].number : ''
-                // }
                 type='text'
                 className='docNumber'
                 placeholder='Номер договора'

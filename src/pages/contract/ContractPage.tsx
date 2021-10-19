@@ -21,7 +21,7 @@ import {
   PaymentFilter,
 } from '../../types/globalTypes'
 import { useMe } from '../../common/hooks'
-import { typeVariants } from '../../common/typeVariants'
+import { typeVariants } from '../../common/helpers/typeVariants'
 import {
   contractListQuery,
   contractListQueryVariables,

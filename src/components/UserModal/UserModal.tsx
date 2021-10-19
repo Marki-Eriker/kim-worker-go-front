@@ -26,7 +26,7 @@ import {
   updateUserMainMutation,
   updateUserMainMutationVariables,
 } from '../../types/updateUserMainMutation'
-import { typeVariants } from '../../common/typeVariants'
+import { typeVariants } from '../../common/helpers/typeVariants'
 import {
   userGrantRequestAccessMutation,
   userGrantRequestAccessMutationVariables,

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLazyQuery, useReactiveVar } from '@apollo/client'
 import { fileLinkVar } from '../../apollo'
 import { useMe } from '../../common/hooks'
-import { typeVariants } from '../../common/typeVariants'
+import { typeVariants } from '../../common/helpers/typeVariants'
 import {
   OrderBy,
   RequestListInput,
@@ -26,7 +26,10 @@ import {
   RequestModal,
   SelectFilter,
 } from '../../components'
-import { getHumanityStatus, statusVariants } from '../../common/statusVariants'
+import {
+  getHumanityStatus,
+  statusVariants,
+} from '../../common/helpers/statusVariants'
 import { LoadingRowContainer } from '../../styles/containers'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPencilAlt, faSpinner } from '@fortawesome/free-solid-svg-icons'

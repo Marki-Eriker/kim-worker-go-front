@@ -60,6 +60,11 @@ export interface ContractListInput {
   paymentFilter?: PaymentFilter | null;
 }
 
+export interface EmailSendInput {
+  address: string;
+  message: string;
+}
+
 export interface FileCreateInput {
   fileName: string;
   extension: string;
